@@ -1,0 +1,17 @@
+name: Trigger Yunxiao Flow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger build-cn-ga-dr (build & deploy to ESA)
+        env:
+          FLOW_WEBHOOK_URL: ${{ secrets.FLOW_WEBHOOK_URL }}
+        run: |
+          test -n "$FLOW_WEBHOOK_URL" || { echo "secret FLOW_WEBHOOK_URL is not set"; exit 1; }
+          curl -fsS -m 30 -H "Content-Type: application/json" -X POST -d '{}' "$FLOW_WEBHOOK_URL"
