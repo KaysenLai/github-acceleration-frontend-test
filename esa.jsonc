@@ -1,0 +1,9 @@
+{
+  "name": "github-acceleration-frontend-test",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "assets": {
+    "directory": "./dist",
+    "notFoundStrategy": "singlePageApplication"
+  }
+}
