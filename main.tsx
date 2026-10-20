@@ -2,11 +2,19 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
+declare const __BUILD_TIME__: string;
+
+const updatedAt = new Date(__BUILD_TIME__).toLocaleString('zh-CN', {
+  timeZone: 'Asia/Shanghai',
+  hour12: false
+});
+
 const checks = [
   ['Source', 'GitHub'],
   ['Framework', 'Vite + React + TypeScript'],
   ['Build output', 'dist'],
-  ['Gateway', 'accelerator.aliyunesa.com']
+  ['Gateway', 'accelerator.aliyunesa.com'],
+  ['Updated at', `${updatedAt} (UTC+8)`]
 ];
 
 function App() {
